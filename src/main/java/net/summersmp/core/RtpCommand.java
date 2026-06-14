@@ -140,7 +140,7 @@ public class RtpCommand implements CommandExecutor, Listener {
                 Block above = world.getBlockAt(x, y + 1, z);
                 if (isSafeGround(ground) && above.getType().isAir()) {
                     player.teleport(new Location(world, x + 0.5, y + 1, z + 0.5));
-                    player.sendMessage(Component.text("Teleported to " + x + ", " + (y + 1) + ", " + z + "!", NamedTextColor.GREEN));
+                    player.sendMessage(Component.text("Teleported into the wild!", NamedTextColor.GREEN));
                     if (!player.hasPermission("summersmp.rtp.nocooldown")) {
                         int cooldown = plugin.getConfig().getInt("rtp.cooldown-seconds", 15);
                         cooldownUntil.put(player.getUniqueId(), System.currentTimeMillis() + cooldown * 1000L);
