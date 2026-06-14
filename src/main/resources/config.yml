@@ -1,7 +1,6 @@
 # ===== SummerSMPCore config =====
 
 # Max Maces (heavy cores) allowed to exist on the server AT ONCE.
-# Destroying one frees a slot so a new heavy core can be found.
 mace-limit: 3
 
 # Announce in chat when a heavy core is claimed or a mace is destroyed.
@@ -10,20 +9,20 @@ announce-heavy-core-claims: true
 # Default reason used when /ban is run without a reason.
 default-ban-reason: "Banned by staff"
 
+# The world /spawn sends players to (your hub).
+spawn-world: hub
+
 # Combat tagging (anti combat-logging).
 combat:
-  # Seconds you stay "in combat" after hitting / being hit by a player.
   tag-seconds: 20
-  # Commands blocked while you are in combat (no leading slash). Namespaced
-  # versions (e.g. essentials:tpa) are matched automatically.
   blocked-commands:
     - rtp
     - tpa
     - tpahere
     - tpaccept
+    - spawn
     - home
     - sethome
-    - spawn
     - back
     - warp
     - tp
@@ -38,11 +37,15 @@ combat:
 
 # Random teleport (/rtp).
 rtp:
+  world: world          # which world /rtp drops players into (your survival world)
   radius: 5000
   min-radius: 100
-  cooldown-seconds: 30
+  warmup-seconds: 5     # countdown before teleport (cancels if you take damage)
+  cooldown-seconds: 15  # wait between uses
   max-attempts: 24
 
 # Teleport requests (/tpa, /tpahere).
 tpa:
-  request-seconds: 60
+  request-seconds: 60         # how long a request stays valid
+  send-cooldown-seconds: 15   # wait between sending requests
+  accept-warmup-seconds: 5    # countdown after accepting (cancels if hit)

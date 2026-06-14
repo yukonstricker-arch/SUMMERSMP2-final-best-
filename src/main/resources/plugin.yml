@@ -1,9 +1,9 @@
 name: SummerSMPCore
-version: 1.1.0
+version: 1.2.0
 main: net.summersmp.core.SummerSMPCore
 api-version: '26.1.2'
 author: SummerSMP
-description: No end crystals, a live 3-Mace cap, ender-chest rules, combat tagging, /rtp, /tpa, and a staff ban command.
+description: No end crystals, a live 3-Mace cap, ender-chest rules, combat tagging, /rtp, /tpa, /spawn, and a staff ban command.
 
 commands:
   ban:
@@ -22,6 +22,10 @@ commands:
     description: Randomly teleport into the world.
     usage: /rtp
     permission: summersmp.rtp
+  spawn:
+    description: Teleport to the hub spawn.
+    usage: /spawn
+    permission: summersmp.spawn
   tpa:
     description: Ask to teleport to a player.
     usage: /tpa <player>
@@ -53,8 +57,11 @@ permissions:
     description: Allows using /rtp.
     default: true
   summersmp.rtp.nocooldown:
-    description: Bypass the /rtp cooldown.
+    description: Bypass the /rtp warmup cooldown.
     default: op
+  summersmp.spawn:
+    description: Allows using /spawn.
+    default: true
   summersmp.tpa:
     description: Allows using the teleport-request commands.
     default: true

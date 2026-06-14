@@ -52,6 +52,8 @@ public final class SummerSMPCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(combatManager, this);
         combatManager.runTaskTimer(this, 20L, 20L);
 
+        getServer().getPluginManager().registerEvents(new JoinListener(), this);
+
         // Commands
         BanCommand banCommand = new BanCommand(this);
         setExecutor("ban", banCommand, banCommand);
@@ -62,12 +64,17 @@ public final class SummerSMPCore extends JavaPlugin {
 
         RtpCommand rtpCommand = new RtpCommand(this);
         setExecutor("rtp", rtpCommand, null);
+        getServer().getPluginManager().registerEvents(rtpCommand, this);
 
         TpaCommand tpaCommand = new TpaCommand(this);
         setExecutor("tpa", tpaCommand, tpaCommand);
         setExecutor("tpahere", tpaCommand, tpaCommand);
         setExecutor("tpaccept", tpaCommand, null);
         setExecutor("tpdeny", tpaCommand, null);
+        getServer().getPluginManager().registerEvents(tpaCommand, this);
+
+        SpawnCommand spawnCommand = new SpawnCommand(this);
+        setExecutor("spawn", spawnCommand, null);
 
         getLogger().info("Enabled. Mace limit: " + maceLimit + " | currently counted: " + heavyCoresFound);
     }
