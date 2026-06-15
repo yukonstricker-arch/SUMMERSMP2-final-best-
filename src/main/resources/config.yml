@@ -12,6 +12,27 @@ default-ban-reason: "Banned by staff"
 # The world /spawn sends players to (your hub).
 spawn-world: hub
 
+# Disable elytra gliding entirely.
+disable-elytra: true
+
+# Items players can't use (movement items). Add material names from:
+# https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+disabled-movement-items:
+  - CHORUS_FRUIT
+
+# 54-slot (double chest) ender chests, saved per player.
+big-ender-chest:
+  enabled: true
+
+# Shown by /rule. Edit freely.
+rules:
+  - "1. No cheating or hacking (x-ray, fly, killaura, autoclickers, dupes). Punishment: 1d / 7d / perm."
+  - "2. No lag machines or anything that harms server performance. Punishment: 1d / 7d / perm."
+  - "3. No exploiting bugs, glitches, or plugin loopholes. Punishment: 1d / 7d / perm."
+  - "4. No ban evasion or alt accounts. Punishment: instant permanent ban."
+  - "5. No intentionally crashing or damaging the server. Punishment: instant permanent ban."
+  - "6. Use common sense - don't ruin the experience for others."
+
 # Combat tagging (anti combat-logging).
 combat:
   tag-seconds: 20
@@ -21,6 +42,7 @@ combat:
     - tpahere
     - tpaccept
     - spawn
+    - world
     - home
     - sethome
     - back
@@ -31,21 +53,20 @@ combat:
     - teleport
     - tppos
     - top
-    - world
     - hub
     - lobby
 
 # Random teleport (/rtp).
 rtp:
-  world: world          # which world /rtp drops players into (your survival world)
+  world: world          # survival world that /rtp, /world and random respawn use
   radius: 5000
   min-radius: 100
-  warmup-seconds: 5     # countdown before teleport (cancels if you take damage)
-  cooldown-seconds: 15  # wait between uses
+  warmup-seconds: 5
+  cooldown-seconds: 15
   max-attempts: 24
 
 # Teleport requests (/tpa, /tpahere).
 tpa:
-  request-seconds: 60         # how long a request stays valid
-  send-cooldown-seconds: 15   # wait between sending requests
-  accept-warmup-seconds: 5    # countdown after accepting (cancels if hit)
+  request-seconds: 60
+  send-cooldown-seconds: 15
+  accept-warmup-seconds: 5

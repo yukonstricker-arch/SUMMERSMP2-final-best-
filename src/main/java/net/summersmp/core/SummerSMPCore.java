@@ -46,7 +46,9 @@ public final class SummerSMPCore extends JavaPlugin {
         // Listeners
         getServer().getPluginManager().registerEvents(new EndCrystalListener(), this);
         getServer().getPluginManager().registerEvents(new MaceLimitListener(this), this);
-        getServer().getPluginManager().registerEvents(new EnderChestListener(), this);
+        getServer().getPluginManager().registerEvents(new BigEnderChestListener(this), this);
+        getServer().getPluginManager().registerEvents(new MovementListener(this), this);
+        getServer().getPluginManager().registerEvents(new RespawnListener(this), this);
 
         combatManager = new CombatManager(this);
         getServer().getPluginManager().registerEvents(combatManager, this);
@@ -75,6 +77,12 @@ public final class SummerSMPCore extends JavaPlugin {
 
         SpawnCommand spawnCommand = new SpawnCommand(this);
         setExecutor("spawn", spawnCommand, null);
+
+        RuleCommand ruleCommand = new RuleCommand(this);
+        setExecutor("rule", ruleCommand, null);
+
+        WorldCommand worldCommand = new WorldCommand(this);
+        setExecutor("world", worldCommand, null);
 
         getLogger().info("Enabled. Mace limit: " + maceLimit + " | currently counted: " + heavyCoresFound);
     }
