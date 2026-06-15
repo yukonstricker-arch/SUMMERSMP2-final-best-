@@ -69,8 +69,7 @@ public class RtpCommand implements CommandExecutor {
         }
 
         player.teleport(dest);
-        player.sendMessage(Component.text("Teleported to " + dest.getBlockX() + ", "
-                + dest.getBlockY() + ", " + dest.getBlockZ() + "!", NamedTextColor.GREEN));
+        player.sendMessage(Component.text("Teleported!", NamedTextColor.GREEN));
         if (!bypass) {
             cooldownUntil.put(player.getUniqueId(), now + cooldown * 1000L);
         }
